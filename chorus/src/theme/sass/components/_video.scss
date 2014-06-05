@@ -1,0 +1,473 @@
+ul.video-list {
+  margin: 10px 10px 20px 10px;
+  text-align: center;
+  li {
+    display: inline-block;
+    text-align: left;
+    .card {
+      @include card('poster');
+      float: left;
+
+    }
+    &.next-page {
+      display: block;
+      clear: both;
+      background: #fff;
+      border-bottom: 2px solid #ccc;
+      color: #777;
+      font-size: 15px;
+      padding: 8px;
+      margin: 15px 80px;
+      text-align: center;
+      cursor: pointer;
+      &:hover {
+        background: #f1f1f1;
+      }
+    }
+    @include breakpoint($width-small){
+      display: block;
+      float: left;
+
+    }
+  }
+}
+.section-tvshows,
+.section-movies {
+  #sidebar-first {
+   // display: none;
+  }
+  #main {
+  //  margin-left: $width-header;
+  }
+  .nav {
+    margin-bottom: 0;
+  }
+  #content {
+    padding-top: 9px;
+  }
+}
+
+
+
+/** MOVIE *******************/
+.section-tvshow,
+.section-movie {
+  #page-header h1 a {
+    width: auto;
+    padding-right: 17px;
+  }
+  #sidebar-first {
+    display: none;
+  }
+  .backstretch {
+    background: #fff;
+    img {
+      opacity: 0.2;
+    }
+  }
+
+  // fixed sidebar of movie
+  .video-side {
+    padding: 10px;
+    .video-large-progress {
+      //display: none;
+      height: 5px;
+      margin-top: -5px;
+      position: relative;
+      z-index: 0;
+      background: rgba(0,0,0,0.1);
+      span {
+        display: block;
+        height: 5px;
+        background: $color-carrot;
+      }
+    }
+    .thumb {
+      display: none;
+    }
+    @include breakpoint($width-tablet){
+      display: block;
+      position: fixed;
+      top: 40px;
+      left: 40px;
+      width: $width-sidebar-first-small;
+      z-index: 20;
+      .thumb {
+        display: block;
+      }
+      .widethumb {
+        display: none;
+      }
+    }
+    .video-thumb {
+      padding: 0px;
+      background: rgba(255, 255, 255, 0.7);
+      position: relative;
+      max-height: 200px;
+      overflow: hidden;
+      margin: -10px -10px;
+      img {
+        width: 100%;
+      }
+      @include breakpoint($width-tablet){
+        max-height: none;
+        overflow: visible;
+        margin: 0;
+        img {
+          max-width: $width-sidebar-first-small;
+        }
+      }
+    }
+    // hover actions
+    .actions-wrapper {
+      @include hover-play-button;
+      @include center-absolute(0);
+      width: auto;
+      z-index: 30;
+      background: rgba(0, 0, 0, 0.28);
+      .actions {
+        float: right;
+      }
+      .btn {
+        opacity: 0.7;
+        &:focus,
+        &:hover {
+          background: none;
+          opacity: 1;
+        }
+      }
+      .tvshow-play,
+      .movie-play {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        font-size: 250%;
+      }
+      .thumbs-up {
+        .tvshow-thumbsup,
+        .movie-thumbsup {
+          color: $color-carrot;
+        }
+      }
+    }
+    @include breakpoint($width-small){
+      top: 52px;
+      left: 51px;
+      width: 279px;
+      .video-thumb {
+        padding: 0px;
+        img {
+          max-width: none;
+        }
+      }
+      .actions-wrapper {
+        @include center-absolute(0);
+      }
+    }
+    @include breakpoint($width-large){
+      width: $width-sidebar-first-large + 8;
+      .video-thumb img {
+        max-width: $width-sidebar-first-large;
+      }
+    }
+  }
+  .tab-pane {
+    padding: 15px;
+    @include breakpoint($width-large){
+      padding: 15px 25px;
+    }
+  }
+
+  .video-thumb {
+
+
+
+  }
+  #movie-cast {
+    overflow: hidden;
+  }
+  .cast-member {
+    background: rgba(255, 255, 255, 0.69);
+    overflow: hidden;
+    margin: 5px 0;
+    height: 80px;
+    color: $color-light-slate;
+    @include breakpoint($width-tablet){
+      float: left;
+      margin: 0 2% 5px 0;
+      width: 48%;
+    }
+    @include breakpoint($width-small){
+      margin: 0 1% 10px 0;
+      width: 32%;
+    }
+    @include breakpoint($width-large){
+      margin-right: 1%;
+      width: 24%;
+    }
+    .image {
+      width: 60px;
+      height: 80px;
+      background: #999;
+      float: left;
+      margin-right: 8px;
+      background-size: cover;
+      display: block;
+      margin-top: 0;
+      max-height: none;
+    }
+    strong {
+      display: block;
+      line-height: 20px;
+      padding-top: 10px;
+      font-weight: normal;
+      font-size: 110%;
+      height: 18px;
+      overflow: hidden;
+    }
+    span {
+      font-size: 90%;
+      color: #AAA;
+      max-height: 44px;
+      overflow: hidden;
+      display: block;
+      margin-top: 5px;
+      margin-right: 5px;
+      line-height: 15px;
+    }
+  }
+
+  #fanart-background {
+    position: fixed;
+    left: 0px;
+    right: 0;
+    bottom: $height-footer;
+    top: 0;
+    @include breakpoint($width-tablet){
+      right: $width-sidebar-second-small;
+    }
+    @include breakpoint($width-small){
+      right: $width-sidebar-second;
+    }
+  }
+  #details {
+    max-width:1205px;
+    @include breakpoint($width-large){
+      margin-left: 130px;
+    }
+    .video-tab-wrapper {
+      margin: 48px 0px 0 0px;
+      @include breakpoint($width-small){
+        margin: 59px 90px 0 0px;
+      }
+    }
+    .content-actions {
+      top: -41px;
+    }
+    .tab-wrapper {
+      background: $color-trans-white;
+      position: relative;
+      //min-height: 343px;
+      .content-tabs {
+        background: none;
+      }
+      .library-pager {
+        position: absolute;
+        right: 7px;
+        width: 150px;
+        top: -48px;
+        padding: 7px 0;
+        margin: 0px;
+        @include breakpoint($width-small){
+          right: 0;
+          top: -52px;
+        }
+        a {
+          padding: 8px 0px;
+          color: rgba(85, 85, 85, 0.36);
+        }
+      }
+      .nav-tabs {
+        position: absolute;
+        margin-top: -47px;
+        font-weight: bold;
+        li a {
+          border: none;
+          @include border-radius(0);
+          font-weight: normal;
+          padding: 14px 17px 6px;
+          line-height: 28px;
+          background: rgba(255,255,255, 0.3);
+          text-align: center;
+        }
+        li.active a:hover,
+        li.active a {
+          background: $color-trans-white !important;
+          font-size: 17px;
+        }
+        li:hover a {
+          background: rgba(255,255,255, 0.5) !important;
+          color: #444;
+        }
+      }
+    }
+    &.has-fanart {
+    }
+  }
+  .tab-pane {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .content-tabs {
+    .nav-tabs > li > a,
+    a,
+    .btn {
+      color: #555;
+      &:hover {
+        color: #999;
+      }
+    }
+    a:hover {
+      color: #eee;
+    }
+  }
+}
+
+#movie-watch {
+  p {
+    font-size: 14px;
+    color: #777;
+  }
+}
+
+#tv-watch,
+#tv-season,
+#movie-watch,
+#movie-detail {
+  $grids: 8;
+  $gutters: 0.8em;
+  .col-1 {
+    margin-bottom: 20px;
+    @include breakpoint($width-tablet) {
+      @include  grid-span(4, 1, 6);
+    }
+
+
+  }
+  .col-2 {
+
+    @include breakpoint($width-tablet) {
+      @include  grid-span(2, 5, 6);
+    }
+
+
+    .rating {
+      margin-bottom: 30px;
+      overflow: hidden;
+      height: 70px;
+      .fa-star,
+      .value {
+        font-size: 60px;
+        line-height: 70px;
+        padding-left: 10px;
+        color: rgba(43, 47, 48, 0.56);
+        float: right;
+      }
+      .fa-star {
+        font-size: 50px;
+        color: rgba(43, 47, 48, 0.30);
+      }
+      .votes {
+        clear: both;
+        color: rgba(46, 46, 46, 0.34);
+        font-size: 13px;
+        margin: 5px 0;
+      }
+    }
+    h4 {
+      text-align: right;
+      margin-right: 10px;
+      padding-right: 7px;
+    }
+//    ul {
+//      color: #666;
+//      font-size: 90%;
+//      padding-right: 10px;
+//    }
+  }
+}
+
+.sub-block {
+  ul {
+    padding-right: 15px;
+    text-align: right;
+    padding-bottom: 6px;
+    li {
+      font-size: 14px;
+      color: rgba(70, 70, 70, 0.8);
+      strong {
+        text-transform: uppercase;
+        padding-left: 9px;
+      }
+      small {
+        font-size: 12px;
+        color: rgba(68, 68, 68, 0.36);
+      }
+    }
+  }
+}
+
+#seasons {
+  clear: both;
+  overflow: hidden;
+  padding-bottom: 20px;
+  margin-right: -10px; // accounts for the extra margin on the end of a row
+  h3 {
+    color: rgba(53, 53, 53, 0.28);
+    margin: 0;
+    line-height: 25px;
+    padding: 0 0 6px 5px;
+    font-size: 17px;
+    a {
+      color: rgba(53, 53, 53, 0.45);
+    }
+  }
+  ul.video-list {
+    margin: 0;
+    li {
+      .card {
+        @include card('poster-mini');
+        @include watched-style;
+      }
+    }
+  }
+  &.episodes {
+    ul.video-list {
+      li {
+        .card {
+          @include card('episode');
+        }
+
+      }
+    }
+  }
+}
+
+#tvshow-detail {
+  overflow: hidden;
+}
+
+
+.recent-tv-list {
+  &.video-list li .card {
+    //@include card('episode');
+  }
+}
+
+h1.video-title {
+  font-size: 31px;
+  color: #444;
+  letter-spacing: -1px;
+  font-weight: normal;
+}
