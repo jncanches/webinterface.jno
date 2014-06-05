@@ -1,0 +1,12 @@
+<script type="text/template" id="tpl-homeMenuItems">
+  <ul class="homeMenuItems"></ul>
+</script>
+
+<script type="text/template" id="tpl-homeMenuItem">
+  <li class="homeMenuItem">
+	<% if (typeof(icon) != "undefined") { %>
+    	<img class="media-object" src="app/img/faces/<%- icon %>">
+	<%} else { %>
+		<span><%- label%></span>
+  </li>
+</script>
