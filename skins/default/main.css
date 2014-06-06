@@ -6,47 +6,86 @@ body {
 	height: 100%;
 	padding: 0px;
 	margin: 0px;
-	background-color: #571908;
+	background-color: #e5e5e5;
+	overflow: hidden;
 }
 
 #main_wrapper {
 	height: 100%;
-	width: 1024px;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#main_wrapper nav {
-	width: 1024px;
+	width: 100%;
+	overflow: hidden;
 }
 
 header {
 	width: 100%;
-	background-color: #276C2B;
-	height: 40px;
-	border: 1px solid red;
+	background-color: #f1f1f1;
+	height: 60px;
+	box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
 }
 
-nav {
-	z-index: 2;
-	top: 40px;
-	position: absolute;
-	background-color: #276C2B;
-	height: 30px;
-	border: 1px solid red;
-}
-
-section
-{
-	margin-top: 29px;
-	width: 100%;
+#containerToResize {
 	position: relative;
-	background-color: #276C2B;
-    border: 1px solid red;
+	height: 530px; /*window heigth - header height - footer height*/
 }
 
-section article {
-	margin-right: 170px;
+#NavContentContainer {
+	position: absolute;
+	top: 0;
+	bottom: 56px;
+	width: 100%;
+}
+
+#navContainer {
+	float: left;
+	width: 220px;
+	margin: 0;
+	position: relative;
+	height: 100%;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+#verticalNav {
+	position: absolute;
+	height: auto;
+	background-color: #fff;
+	overflow-x: hidden;
+	overflow-y: auto;
+	margin: 0 4px 0 0;
+	width: 220px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+#globalContentContainer {
+	margin: 0 0 0 220px;
+	height: 100%;
+	position: relative;
+}
+
+#globalContentMain {
+	position: absolute;
+	top: 48px;
+	bottom: 0;
+	width: 100%;
+}
+
+#globalContent
+{
+	overflow: auto;
+	background-color: #e5e5e5;
+	overflow-y: scroll;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+}
+
+section {
+	position: relative;
 }
 
 aside
@@ -60,9 +99,12 @@ aside
 }
 
 footer {
-	background-color: #276C2B;
+	width:100%;
+	position: absolute;
+	bottom: 0px;
+	background-color: #fafafa;
 	height: 50px;
-	border: 1px solid red;
+	box-shadow: 0 0 8px rgba(0,0,0,.4);
 }
 
 nav ul {

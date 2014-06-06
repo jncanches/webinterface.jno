@@ -1,5 +1,4 @@
 WebInterface.Views.HomeMenuItems = Backbone.View.extend({
-	tagName: "ul",
 	template: _.template($('#tpl-homeMenuItems').html()),
 	
 	renderOne: function(homeMenuItem) {
@@ -8,8 +7,7 @@ WebInterface.Views.HomeMenuItems = Backbone.View.extend({
 	},
 	
 	render: function() {
-		var html = this.template();
-	    this.$el.html(html);
+		this.setElement(this.template(this.model));
 	    
 	    this.collection.each(this.renderOne, this);
 	    

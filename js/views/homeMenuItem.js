@@ -4,8 +4,8 @@ WebInterface.Views.HomeMenuItem = Backbone.View.extend({
 	template: _.template($('#tpl-homeMenuItem').html()),
 	
 	render: function() {
-		var html = '<h1>' + this.model.get('label') + '</h1>';
-		this.$el.html(html);
+		var html = this.template(this.model.attributes);
+	    this.$el.html(html);
 		return this; 
 	}
 });

@@ -5,7 +5,6 @@
 WebInterface.Router = Backbone.Router.extend({
   routes: {
     "":                         "home",
-    "homeMenu":    		        "homeMenu",
     "contact":                  "contact",
     "artist/:id":               "artist",
     "artist/:id/:task":         "artist",
@@ -26,7 +25,7 @@ WebInterface.Router = Backbone.Router.extend({
     "movies/:tag/:id":          "moviesTag",
     "movie-genre/:tag":         "movieGenre", // wrapper for moivesTag
     "movies/:tag":              "moviesTag",
-    "movies":                   "moviesLanding",
+    "movies":                   "movies",
     "mymovies":                 "moviesLanding",
     "movie/:id":                "movie",
     "tv/page/:num/:sort":       "tvshows",
