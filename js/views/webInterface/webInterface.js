@@ -7,10 +7,10 @@ define([
 	// which will be used as our views primary template
 	'models/webInterface/webInterface',
 	'text!../../../../skins/default/templates/webInterface/webInterface.html'
-	], function($, _, Backbone, webInterfaceModel, webInterfaceTemplate){
+	], function($, _, Backbone, text, webInterfaceModel, webInterfaceTemplate){
 		
 		var webInterfaceView = Backbone.View.extend({
-			el: $('#container'),
+			el: $('body'),
 			initialize: function() {
 				this.model = new webInterfaceModel({userName: 'aaaaaaa', locale: 'en_US'});
 				var compiledTemplate = _.template( webInterfaceTemplate, this.model.attributes );
@@ -18,8 +18,8 @@ define([
 			}
 		});
 		
-	// Our module now returns our view
-	return webInterfaceView;
+		// Our module now returns our view
+		return webInterfaceView;
 });
 /*
 
