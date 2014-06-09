@@ -1,0 +1,12 @@
+.movies-items {
+}
+
+.movie-poster-item {
+	display:inline;
+	width: 250px
+}
+
+.movie-poster-item a img {
+	display:inline;
+	width: 250px
+}

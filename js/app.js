@@ -1,28 +1,29 @@
-window.WebInterface = {
-	Models: {},
-	Collections: {},
-	Views: {},
+window.WI = window.WebInterface = { //remenber to remove window.WebInterface references
+		Models: {},
+		Collections: {},
+		Views: {},
+		XbmcCommand: {}
+}
 
-	start: function(data) {
+define([
+	// These are path alias that we configured in our bootstrap
+	'jquery',     // libs/jquery/jquery
+	'underscore', // libs/underscore/underscore
+	'backbone',    // libs/backbone/backbone
+	'router',
+	'tools/utils',
+], function($, _, Backbone, Router, utils){
+	var initialize = function() {
 		
-		WebInterface.router = new WebInterface.Router();
-		WebInterface.context = new WebInterface.Models.Context(data.context);
-		WebInterface.mainView = new WebInterface.Views.Main({model: WebInterface.context});
-		$("body").append(WebInterface.mainView.render().el);
+		//define namespace. Lokk at require.js doc tosee if a mechanism exists
 		
-		WebInterface.router.on('route:home', function() {
-			//render home menu
-			var homeMenuItems = new WebInterface.Collections.HomeMenuItems(data.homeMenuItems);
-			var homeMenuItemsView = new WebInterface.Views.HomeMenuItems({
-				collection: homeMenuItems
-			});
-			$('#globalContent').html(homeMenuItemsView.render().$el);
+		utils.buildXbmcObjectsStructure();
+		$(document).on("xbmcConnectionEstablished", function() {
+			Routeur.initialize();
 		});
-
-		WebInterface.router.on('route:movies', function() {
-			$('#globalContent').html("Movies here !!!");
-		});
-
-		Backbone.history.start();
 	}
-};
+	
+	return {
+		initialize: initialize
+	}
+});

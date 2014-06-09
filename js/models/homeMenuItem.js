@@ -3,6 +3,7 @@ WebInterface.Models.HomeMenuItem = Backbone.Model.extend({
 		id: null,
 		label: null,
 		link: null,
-		icon: null
+		icon: null,
+		selected: false
 	}
 });
