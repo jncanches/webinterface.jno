@@ -3,6 +3,7 @@ requirejs.config({
     	'underscore': 'libs/underscore/underscore',
     	'backbone': 'libs/Backbone/backbone-min',
         'jquery': 'libs/jquery/jquery',
+        'jquery.mousewheel': 'libs/jquery/jquery.mousewheel',
         'router': 'router',
         'text': 'libs/require/text',
         'xbmcControllerHttp': 'libs/XbmcController/XbmcHttpApi',

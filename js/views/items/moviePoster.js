@@ -1,12 +1,23 @@
-WebInterface.Views.MoviePoster = Backbone.View.extend({
-	tagName: 'li',
-	className: '',
-	template: _.template($('#tpl-moviePoster').html()),
-	
-	render: function() {
-		this.setElement(this.template(this.model.attributes));
-		this.$el.data("view", this);
-		this.model.view = this;
-		return this; 
-	}
+define([
+	'jquery',
+	'underscore',
+	'backbone',
+	'text',
+	'router',
+	'tools/utils',
+	'text!../../../../skins/default/templates/items/moviePoster.html'
+	], function($, _, Backbone, text, Router, Utils, MoviePosterTemplate){
+		
+		var MoviePosterView = Backbone.View.extend({
+			MoviePosterTemplate: MoviePosterTemplate,
+			
+			render: function(){
+				var compiledTemplate = _.template( this.MoviePosterTemplate, {movie: this.model.get("moviedetails"), Utils: Utils} );
+			
+				this.setElement(compiledTemplate);
+				return this;
+			}
+		});
+		// Our module now returns our view
+		return MoviePosterView;
 });
