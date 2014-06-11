@@ -10,6 +10,8 @@ define([
 	], function($, _, Backbone, text, Router, MovieCollection, MoviePosterListTemplate, MoviePosterView){
 		
 		var MoviePosterListView = Backbone.View.extend({
+			defaultBackground: 'movies.jpg',
+			
 			MoviePosterListTemplate: MoviePosterListTemplate,
 			MoviePosterView: MoviePosterView,
 			render: function(){

@@ -10,15 +10,47 @@ define([
 	], function($, _, Backbone, text, Router, HomeMenuBarItemCollection, HomeMenuBarTemplate){
 		
 		var HomeMenuBarView = Backbone.View.extend({
-			render: function(){
+			/*defaultBackground: 'music.jpg',*/
+			initialize: function() {
 				this.homeMenuBarItemCollection = new HomeMenuBarItemCollection();
-				var compiledTemplate = _.template( HomeMenuBarTemplate, { homeMenuBarItems: this.homeMenuBarItemCollection.models } );
+			},
+			
+			render: function(){
+				if (!this.rendered) {
+					var compiledTemplate = _.template( HomeMenuBarTemplate, { homeMenuBarItems: this.homeMenuBarItemCollection.models } );
 				
-				this.setElement(compiledTemplate);
-				
-				this.$itemsContainerEl = $(".items-container", this.$el);
-				
-				this.initializeEvents();
+					this.setElement(compiledTemplate);
+
+					this.$itemsContainerEl = $(".items-container", this.$el);
+					
+					this.initializeEvents();
+					//this.initializeMouseWheelEvents();
+					this.rendered = true;
+				}
+				return this;
+			},
+			
+			show: function(callback) {
+				var that = this;
+				this.$el.fadeIn(200, function() {
+					var currentModel = that.homeMenuBarItemCollection.getSelectedModel();
+					if (currentModel) {
+						that.selectHomeItemView(currentModel);
+					}
+					that.initializeMouseWheelEvents(); //need to be re-initialized due probably to a bug of jquery.mousewheel plugin
+					if (callback) {
+						callback();
+					}
+				});
+				return this;
+			},
+			
+			hide: function(callback) {
+				this.$el.fadeOut(200, function() {
+					if (callback) {
+						callback();
+					}
+				});
 				return this;
 			},
 			
@@ -32,23 +64,6 @@ define([
 						}
 					});
 				});
-				
-				var currentModel = this.homeMenuBarItemCollection.getSelectedModel();
-				if (currentModel) {
-					this.selectHomeItemView(currentModel);
-				}
-				
-				this.$el.mousewheel(function(event) {
-			    	if (!that.$el.is(':visible')) {
-			    		return;
-			    	}
-			    	if (event.deltaY == 1) { //UP so left
-			    		that.moveRight();
-			    	}
-			    	if (event.deltaY == -1) { //DOWN so right
-			    		that.moveLeft();
-			    	}
-			    });
 				
 				if (!this.eventsInitialized) {
 				    $(document).on("keydown", function(event) {
@@ -81,6 +96,21 @@ define([
 				    });
 				    this.eventsInitialized = true;
 				}
+			},
+			
+			initializeMouseWheelEvents: function() {
+				var that = this;
+				this.$el.mousewheel(function(event) {
+			    	if (!that.$el.is(':visible')) {
+			    		return;
+			    	}
+			    	if (event.deltaY == 1) { //UP so left
+			    		that.moveRight();
+			    	}
+			    	if (event.deltaY == -1) { //DOWN so right
+			    		that.moveLeft();
+			    	}
+			    });
 			},
 			
 			selectHomeItemView: function(itemModel) {

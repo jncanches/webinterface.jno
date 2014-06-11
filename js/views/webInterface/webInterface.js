@@ -7,13 +7,11 @@ define([
 	// Using the Require.js text! plugin, we are loaded raw text
 	// which will be used as our views primary template
 	'models/webInterface/webInterface',
-	'text!../../../../skins/default/templates/webInterface/webInterface.html',
-	
-	'views/widgets/homeMenuBar',
-	], function($, $MouseWheel, _, Backbone, text, webInterfaceModel, webInterfaceTemplate, HomeMenuBarView){
+	'text!../../../../skins/default/templates/webInterface/webInterface.html'
+	], function($, $MouseWheel, _, Backbone, text, webInterfaceModel, webInterfaceTemplate){
 		
 		var webInterfaceView = Backbone.View.extend({
-			defaultBackground: "movies.jpg",
+			defaultBackground: "music.jpg",
 			
 			el: $('body'),
 			initialize: function() {
@@ -22,19 +20,22 @@ define([
 				this.$el.html(compiledTemplate);
 
 				this.initializeEvents();
-				
-				this.homeMenuBar = new HomeMenuBarView();
-				this.displayContentView(this.homeMenuBar);
-				
 			},
 			
 			displayContentView: function(view) {
 				var that = this;
 				if (this.currentView) {
-					this.currentView.$el.fadeOut(200, function() {
-						that.currentView = view;
-						that._animateCurrentView();
-					});
+					if (this.currentView.hide) {
+						this.currentView.hide(function() {
+							that.currentView = view;
+							that._animateCurrentView();
+						});
+					} else {
+						this.currentView.$el.fadeOut(200, function() {
+							that.currentView = view;
+							that._animateCurrentView();
+						});
+					}
 				} else {
 					this.currentView = view;
 					this._animateCurrentView();
@@ -42,10 +43,17 @@ define([
 			},
 
 			_animateCurrentView: function() {
+				if (this.currentView.defaultBackground) {
+					this.updateBackground(this.currentView.defaultBackground);
+				}
 				var $elToShow = this.currentView.render().$el;
 				$elToShow.css("display", "none");
 				$("#globalContent", this.$el).html($elToShow);
-				$elToShow.fadeIn(200);
+				if (this.currentView.show) {
+					this.currentView.show();
+				} else {
+					$elToShow.fadeIn(200);
+				}
 			},
 			
 			initializeEvents: function() {
@@ -82,8 +90,11 @@ define([
 			},
 			
 			updateBackground: function(background) {
-				if (!background) {
+				if (!background && this.defaultBackground) {
 					background = this.defaultBackground;
+				}
+				if (!background) {
+					return;
 				}
 				//don't update background if something is now playing
 				//if (! somethingnowplaying) {

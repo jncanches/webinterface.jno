@@ -3,11 +3,13 @@ define([
   'underscore',
   'backbone',
   'views/webInterface/webInterface',
+  'views/widgets/homeMenuBar',
   'views/lists/moviePosterList',
   //'views/items/moviePoster'
-], function($, _, Backbone, WebInterfaceView, MoviePosterListView) {//}, moviePosterListView, moviePosterView){
+], function($, _, Backbone, WebInterfaceView, HomeMenuBarView, MoviePosterListView) {//}, moviePosterListView, moviePosterView){
 	var AppRouter = Backbone.Router.extend({
 		WebInterfaceView: WebInterfaceView,
+		HomeMenuBarView: HomeMenuBarView,
 		MoviePosterListView: MoviePosterListView,
 		routes: {
 			"":                         "home",
@@ -21,9 +23,15 @@ define([
 			this.webInterfaceView = new WebInterfaceView();
 			
 		    this.on('route:home', function(){
-		      // Call render on the module we loaded in via the dependency array
-		      // 'views/projects/list'
-		      that.webInterfaceView.render();
+		    	// Call render on the module we loaded in via the dependency array
+		    	// 'views/projects/list'
+
+		    	that.webInterfaceView.render();
+		    	
+		    	if (!this.homeMenuBar) {
+		    		this.homeMenuBar = new HomeMenuBarView();
+		    	}
+		    	that.webInterfaceView.displayContentView(this.homeMenuBar);
 		    });
 			// As above, call render on our loaded module
 			// 'views/users/list'
