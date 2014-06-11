@@ -1,6 +1,6 @@
 <li class="movie-poster-item" id="movie-poster-<%- movie.movieid %>">
 	<a href="#movieDetails/<%- movie.movieid %>">
-		<% if (movie.thumbnail) { %>
+		<% if (movie.art.poster) { %>
 	 		<img class="media-object" src="<%- Utils.getImageUrl(movie.art.poster) %>">
 		<%} else { %>
 			<span><%- movie.label %></span>

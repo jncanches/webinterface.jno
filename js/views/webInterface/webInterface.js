@@ -29,7 +29,23 @@ define([
 			},
 			
 			displayContentView: function(view) {
-				$("#globalContent", this.$el).html(view.render().el);
+				var that = this;
+				if (this.currentView) {
+					this.currentView.$el.fadeOut(200, function() {
+						that.currentView = view;
+						that._animateCurrentView();
+					});
+				} else {
+					this.currentView = view;
+					this._animateCurrentView();
+				}
+			},
+
+			_animateCurrentView: function() {
+				var $elToShow = this.currentView.render().$el;
+				$elToShow.css("display", "none");
+				$("#globalContent", this.$el).html($elToShow);
+				$elToShow.fadeIn(200);
 			},
 			
 			initializeEvents: function() {

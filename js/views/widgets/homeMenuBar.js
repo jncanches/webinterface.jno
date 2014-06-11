@@ -5,7 +5,8 @@ define([
 	'text',
 	'router',
 	'collections/widgets/homeMenuBarItems',
-	'text!../../../../skins/default/templates/widgets/homeMenuBar.html'
+	'text!../../../../skins/default/templates/widgets/homeMenuBar.html',
+	'jquery-ui',
 	], function($, _, Backbone, text, Router, HomeMenuBarItemCollection, HomeMenuBarTemplate){
 		
 		var HomeMenuBarView = Backbone.View.extend({

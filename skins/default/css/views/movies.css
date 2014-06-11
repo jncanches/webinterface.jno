@@ -3,10 +3,16 @@
 
 .movie-poster-item {
 	display:inline;
-	width: 250px
+}
+
+.movie-poster-item a {
+	display: inline-block;
+	text-align: center;
+	min-width: 250px;
+	min-height: 50px;
 }
 
 .movie-poster-item a img {
 	display:inline;
-	width: 250px
+	width: 250px;
 }

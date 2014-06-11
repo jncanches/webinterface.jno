@@ -3,6 +3,7 @@ requirejs.config({
     	'underscore': 'libs/underscore/underscore',
     	'backbone': 'libs/Backbone/backbone-min',
         'jquery': 'libs/jquery/jquery',
+        'jquery-ui': 'libs/jquery-ui/jquery-ui-1.11.0-beta.2.custom/jquery-ui.min',
         'jquery.mousewheel': 'libs/jquery/jquery.mousewheel',
         'router': 'router',
         'text': 'libs/require/text',

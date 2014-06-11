@@ -12,7 +12,8 @@ define([
 	'backbone',    // libs/backbone/backbone
 	'router',
 	'tools/utils',
-	'models/JSONRPC/JSONRPC'
+	'models/JSONRPC/JSONRPC',
+	'jquery-ui'
 ], function($, _, Backbone, Router, Utils, JSONRPCModel){
 	
 	var App = function(){
@@ -20,7 +21,18 @@ define([
 	
 		//redefine Backbone.sync fucntion
 		Backbone.sync = function(method, model, options){
-			WI.XbmcController.call(model.xbmcMethod, model, options.success, options.error, false);
+			var params = model;
+			if (model.models) {
+				//it's a collection so read the fetchParams attributes
+				params = model.fetchParams
+			}
+			/*var params = "";
+			if (model.params) {
+				for (var attrname in model.params) {
+					model.set(attrname, model.params[attrname]);
+				}
+			}*/
+			WI.XbmcController.call(model.xbmcMethod, params, options.success, options.error, false);
 		};
 		
 		this.buildXbmcObjectsStructure();
