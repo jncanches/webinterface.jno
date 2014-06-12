@@ -32,6 +32,11 @@ a, a:visited, a:hover, a:active {
 	width: 100%;
 }
 
+#mainWidget {
+	left: 0px;
+	height: 180px;
+}
+
 #main_wrapper {
 	height: 100%;
 	width: 100%;

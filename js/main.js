@@ -15,5 +15,5 @@ requirejs.config({
 //Load our app module and pass it to our definition function
 require(['app'], function(App){
 	// The "app" dependency is passed in as "App"
-	var app = new App();
+	WI.appl = new App();
 });

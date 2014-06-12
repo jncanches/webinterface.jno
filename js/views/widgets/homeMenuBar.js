@@ -123,6 +123,7 @@ define([
 				this.$itemsContainerEl.css({left: newLeft});
 				
 				$(document).trigger("backgroundUpdateAsked", [itemModel.get("background")]);
+				$(document).trigger("widgetUpdateAsked", [itemModel.get("widget")]);
 			},
 			
 			moveLeft: function() {

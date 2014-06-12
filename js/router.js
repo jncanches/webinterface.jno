@@ -28,16 +28,18 @@ define([
 
 		    	that.webInterfaceView.render();
 		    	
-		    	if (!this.homeMenuBar) {
-		    		this.homeMenuBar = new HomeMenuBarView();
+		    	if (!that.homeMenuBar) {
+		    		that.homeMenuBar = new HomeMenuBarView();
 		    	}
-		    	that.webInterfaceView.displayContentView(this.homeMenuBar);
+		    	that.webInterfaceView.displayContentView(that.homeMenuBar);
 		    });
 			// As above, call render on our loaded module
 			// 'views/users/list'
 		    this.on('route:movies', function(){
-		      var moviePosterListView = new that.MoviePosterListView();
-		      that.webInterfaceView.displayContentView(moviePosterListView);
+		    	if (!that.moviePosterListView) {
+		    		that.moviePosterListView = new that.MoviePosterListView();
+		    	}
+		    	that.webInterfaceView.displayContentView(that.moviePosterListView);
 		    });
 		    this.on('defaultAction', function(actions){
 		    	// We have no matching route, lets just log what the URL was

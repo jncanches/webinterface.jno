@@ -30,7 +30,7 @@ define([
 			    }
 			    //no image, return placeholder
 			    if(rawPath === undefined || rawPath === ''){
-			      return WebInterface.Utils.defaultImage(type);
+			      return WI.Utils.defaultImage(type);
 			    }
 			    // return image with correct path
 			    //<img src="image/image://smb%253a%252f%252fHOME%252fFilms%252fSuper%25208%252fSuper%25208-poster.jpg/" alt="">

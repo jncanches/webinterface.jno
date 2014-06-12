@@ -1,8 +1,9 @@
 define([
 	'underscore',
 	'backbone',
-	'models/widgets/homeMenuBarItem'
-], function(_, Backbone, HomeMenuBarItemModel){
+	'models/widgets/homeMenuBarItem',
+	'views/widgets/RecentlyAddedMovies'
+], function(_, Backbone, HomeMenuBarItemModel, RecentlyAddedMoviesWidget){
 	var HomeMenuBarItemCollection = Backbone.Collection.extend({
 		model: HomeMenuBarItemModel,
 		
@@ -30,7 +31,8 @@ define([
 				id: 4,
 				label : 'Films',
 				link: '#movies',
-				background: "movies.jpg"
+				background: "movies.jpg",
+				widget: RecentlyAddedMoviesWidget
 			},
 			{
 				id: 5,

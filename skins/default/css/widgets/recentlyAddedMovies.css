@@ -1,0 +1,19 @@
+.recently-added-movies-items {
+	padding: 5px;
+	white-space: nowrap;
+}
+
+.recently-added-movie-poster-item {
+	display:inline;
+}
+
+.recently-added-movie-poster-item a {
+	display: inline-block;
+	text-align: center;
+	width: 7%;
+}
+
+.recently-added-movie-poster-item a img {
+	display:inline;
+	width: 100%;
+}

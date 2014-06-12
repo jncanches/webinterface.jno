@@ -20,6 +20,14 @@ define([
 				this.$el.html(compiledTemplate);
 
 				this.initializeEvents();
+				
+				//this.setWidgetContainerPosition();
+				
+				this.initializeWidgets();
+			},
+			
+			initializeWidgets: function() {
+				//initialize here nowPlaying widget, RSS widget
 			},
 			
 			displayContentView: function(view) {
@@ -62,20 +70,34 @@ define([
 				this.$footer = $("#header", this.$el);
 				this.$containerToResize = $("#containerToResize", this.$el);
 				this.$backgroundContainer = $("#background-container", this.$el);
+				this.$widgetContainer = $("#mainWidget", this.$el);
 
 				this.resizeContainerEl();
 				
 				$(window).on("resize", function() {
 					that.resizeContainerEl();
 					that.resizeBackGroundContainer();
+					that.setWidgetContainerPosition();
 				});
 				
 				$(document).on("backgroundUpdateAsked", function(event, background) {
 					that.updateBackground(background);
 				});
 				
+				$(document).on("widgetUpdateAsked", function(event, widgetClass) {
+					that.updateWidget(widgetClass);
+				});
+				
 				$(document).on("pageChanged", function() {
 					//that.updateBackground();
+				});
+			},
+			
+			setWidgetContainerPosition: function() {
+				this.$widgetContainer.position({
+					my :"top left",
+					at :"top-180 left",
+					of :$("#globalContent", this.$el)
 				});
 			},
 			
@@ -108,6 +130,20 @@ define([
 					});
 				}
 				//}
+			},
+			
+			updateWidget: function(widgetClass) {
+				if (!widgetClass) {
+					this.$widgetContainer.html("");
+					return;
+				}
+				var that = this;
+				var widget = new widgetClass();
+				widget.on("widgetUpdated", function() {
+					that.$widgetContainer.append(widget.$el);
+					that.setWidgetContainerPosition();
+				});
+				widget.render();
 			},
 			
 			resizeContainerEl: function() {

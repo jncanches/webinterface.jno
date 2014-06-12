@@ -1,0 +1,13 @@
+<ul class="recently-added-movies-items">
+	<% _.each(recentlyAddedMovies, function(movie) { %>  
+		<li class="recently-added-movie-poster-item" id="recently-added-movie-poster-<%- movie.attributes.movieid %>">
+			<a href="#movieDetails/<%- movie.attributes.movieid %>">
+				<% if(movie.attributes.art.poster) {%>
+		 			<img class="media-object" src="<%- Utils.getImageUrl(movie.attributes.art.poster) %>">
+		 		<% } else { %>
+		 			<img class="media-object" src="<%- Utils.getImageUrl(undefined, 'movies') %>">
+		 		<% } %>
+			</a>
+		</li>
+	<% }); %>
+</ul>

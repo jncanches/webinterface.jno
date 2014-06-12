@@ -1,9 +1,13 @@
-<li class="movie-poster-item" id="movie-poster-<%- movie.movieid %>">
-	<a href="#movieDetails/<%- movie.movieid %>">
-		<% if (movie.art.poster) { %>
+<% if (movie.art) { %>
+	<li class="movie-poster-item" id="movie-poster-<%- movie.movieid %>">
+		<a href="#movieDetails/<%- movie.movieid %>">
 	 		<img class="media-object" src="<%- Utils.getImageUrl(movie.art.poster) %>">
-		<%} else { %>
-			<span><%- movie.label %></span>
-		<%}%>
-	</a>
-</li>
+		</a>
+	</li>
+<% } else {%>
+	<li class="movie-poster-item" id="movie-poster-<%- movie.movieid %>">
+		<a href="#movieDetails/<%- movie.movieid %>">
+	 		<span><%- movie.label %></span>
+		</a>
+	</li>
+<% } %>

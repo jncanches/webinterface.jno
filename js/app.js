@@ -1,4 +1,5 @@
-window.WI = window.WebInterface = { //remenber to remove window.WebInterface references
+//define namespace. Lokk at require.js doc to see if a mechanism exists
+window.WI = { //remenber to remove window.WebInterface references
 		Models: {},
 		Collections: {},
 		Views: {},
@@ -13,11 +14,12 @@ define([
 	'router',
 	'tools/utils',
 	'models/JSONRPC/JSONRPC',
+	'collections/movies/movies',
 	'jquery-ui'
-], function($, _, Backbone, Router, Utils, JSONRPCModel){
+], function($, _, Backbone, Router, Utils, JSONRPCModel, MovieCollection){
 	
 	var App = function(){
-		//define namespace. Lokk at require.js doc tosee if a mechanism exists
+		var that = this;
 	
 		//redefine Backbone.sync fucntion
 		Backbone.sync = function(method, model, options){
@@ -36,9 +38,14 @@ define([
 		};
 		
 		this.buildXbmcObjectsStructure();
+		
+		//launch fill of movies, tvshows, and music collections
+		
 		$(document).on("xbmcConnectionEstablished", function() {
 			var router = new Router();
 		});
+		
+		return this;
 	};
 	
 	App.prototype = {
