@@ -60,7 +60,7 @@
 	
 }
 
-.home-menu-item a:hover, .home-menu-item.selected a {
+.home-menu-item a:hover, .home-menu-item a.selected {
 	color: #FFFFFF;
 	opacity: 1;
 }

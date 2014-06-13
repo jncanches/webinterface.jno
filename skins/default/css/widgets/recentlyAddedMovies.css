@@ -14,6 +14,8 @@
 }
 
 .recently-added-movie-poster-item a img {
+	border-radius: 8px;
 	display:inline;
 	width: 100%;
+	
 }

@@ -13,6 +13,7 @@
 }
 
 .movie-poster-item a img {
+	border-radius: 15px;
 	display:inline;
 	width: 250px;
 }

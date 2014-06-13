@@ -8,7 +8,58 @@
         <title>Jno's web interface</title>
         <link rel="icon" type="image/png" href="skins/default/images/xbmc-icon.png" />
         
-        <script data-main="js/main" src="js/libs/require/require.js"></script>
+		<!-- 
+		LIBRAIRIES
+		 -->        
+        <script src="js/libs/backbone.marionette/underscore.js"></script>
+        <script src="js/libs/jquery/jquery.js"></script>
+    	<script src="js/libs/backbone.marionette/backbone.js"></script>
+    	<script src="js/libs/backbone.websockets/backbone.websockets.js"></script>
+    	<script src="js/libs/backbone.marionette/backbone.marionette.js"></script>
+    	
+        <script src="js/libs/jquery-ui/jquery-ui-1.11.0-beta.2.custom/jquery-ui.min.js"></script>
+        <script src="js/libs/jquery/jquery.mousewheel.js"></script>
+
+		<!-- 
+		RPC Libraries
+		 -->
+        <script src="js/libs/XbmcController/XbmcHttpApi.js"></script>
+        <script src="js/libs/XbmcController/XbmcWebSocketsApi.js"></script>
+
+		<!-- 
+		TOOLS
+		 -->
+        <script src="js/tools/userSettings.js"></script>
+        <script src="js/tools/utils.js"></script>
+
+		<!-- 
+		Models
+		 -->
+		<script src="js/models/items/movie.js"></script>
+		<script src="js/models/JSONRPC/JSONRPC.js"></script>
+		<script src="js/models/webInterface/webInterface.js"></script>
+		<script src="js/models/widgets/homeMenuBarItem.js"></script>
+		
+		<!-- 
+		COLLECTION
+		 -->
+		<script src="js/collections/movies/movies.js"></script>
+		<script src="js/collections/movies/recentlyAddedMovies.js"></script>
+		<script src="js/collections/widgets/homeMenuBarItems.js"></script>
+		
+		<!-- 
+		VIEWS
+		 -->
+		<script src="js/views/items/moviePoster.js"></script>
+		<script src="js/views/lists/moviePosterList.js"></script>
+		<script src="js/views/webInterface/webInterface.js"></script>
+		<script src="js/views/widgets/homeMenuBarItem.js"></script>
+		<script src="js/views/widgets/homeMenuBar.js"></script>
+		<script src="js/views/widgets/recentlyAddedMovies.js"></script>
+
+		<!-- 
+		CSS
+		 -->
         
         <link rel="stylesheet" href="skins/default/css/jquery-ui.css">
 		<link rel="stylesheet" href="skins/default/css/main.css">
@@ -18,7 +69,59 @@
 		<link rel="stylesheet" href="skins/default/css/views/movies.css">
 		
 		<link rel="stylesheet" href="skins/default/css/widgets/recentlyAddedMovies.css">
+
+         <!-- 
+        TEMPLATES
+         -->
+        <script id="layout-app" type="text/template">
+<div id="main_wrapper">
+	<div id="background-container"></div>
+	<header id="header" style="display:none">
+	</header>
+	<div id="containerToResize">
+		<div id="nav-content-container">
+			<div id="nav-container">
+				<nav id="nav" style="display: none;">
+				</nav>
+			</div>
+			<div id="content-container">
+				<div id="content">
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer id="globalFooter">
+		Footer
+	</footer>
+</div>
+		</script>
+
+ 		<script id="homeMenuBar" type="text/template">
+<div class="items-container">
+</div>
+		</script>
+		
+		<script id="homeMenuBarItem" type="text/template">
+<a href="<%- link %>" <% if (typeof selected != "undefined") {%> class="selected"<%}%>">
+	<% if (typeof icon != "undefined") { %>
+		<img class="media-object" src="app/img/faces/<%- icon %>">
+	<%} else { %>
+		<span><%- label %></span>
+	<%}%>
+</a>
+		</script>
+		
+
+		<!-- 
+		APP
+		 -->
+        <script src="js/appLayout.js"></script>
+		<script src="js/appController.js"></script>
+        <script src="js/appRouter.js"></script>
+		<script src="js/app.js"></script>
+
         
+       
     </head>
 
     <body>

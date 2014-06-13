@@ -1,4 +1,4 @@
-WebInterface.UserSettings = {
+UserSettings = {
 	defaults: {
 		homeMenuItems: [{
 			id: 1,
@@ -70,6 +70,7 @@ WebInterface.UserSettings = {
 		{
 			id: 13,
 			label : 'Parametres',
+			link: '#params',
 			background: 'settings.jpg'
 		}
 		]
@@ -78,5 +79,4 @@ WebInterface.UserSettings = {
 	getHomeMenuItems: function() {
 		return WebInterface.UserSettings.defaults.homeMenuItems; 
 	}
-	
 };
