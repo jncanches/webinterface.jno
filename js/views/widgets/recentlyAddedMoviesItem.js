@@ -1,7 +1,7 @@
-var HomeMenuBarItemView = Backbone.Marionette.ItemView.extend({
-	tagName: "div",
-	className: "home-menu-item",
-	template: '#homeMenuBarItem',
+var RecentlyAddedMoviesItemView = Backbone.Marionette.ItemView.extend({
+	tagName: "li",
+	className: "recently-added-movie-poster-item",
+	template: '#recentlyAddedMovieWidget',
 	
 	modelEvents: {
 		"change:selected": "selectedChanged"
@@ -10,9 +10,6 @@ var HomeMenuBarItemView = Backbone.Marionette.ItemView.extend({
 	behaviors: {
 		UpdateBackground: {
 			test: "test"
-	    },
-	    UpdateWidget: {
-	    	test: "test"
 	    }
 	},
 	

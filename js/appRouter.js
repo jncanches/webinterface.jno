@@ -1,10 +1,9 @@
 var AppRouter = Backbone.Marionette.AppRouter.extend({
-	controller: AppController,
-	
+//	controller: AppController,
 	appRoutes: {
 		"": "displayHome",
-		"home": "displayHome",
-		"movies": "displayMovies"
+		"home": "displayHome"//,
+		//"movies": "displayMovies"
 	}
 });
 

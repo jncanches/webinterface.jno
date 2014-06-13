@@ -15,6 +15,7 @@
         <script src="js/libs/jquery/jquery.js"></script>
     	<script src="js/libs/backbone.marionette/backbone.js"></script>
     	<script src="js/libs/backbone.websockets/backbone.websockets.js"></script>
+    	<script src="js/libs/backbone.xbmc.sync/backbone.xbmc.sync.js"></script>
     	<script src="js/libs/backbone.marionette/backbone.marionette.js"></script>
     	
         <script src="js/libs/jquery-ui/jquery-ui-1.11.0-beta.2.custom/jquery-ui.min.js"></script>
@@ -29,12 +30,18 @@
 		<!-- 
 		TOOLS
 		 -->
-        <script src="js/tools/userSettings.js"></script>
         <script src="js/tools/utils.js"></script>
+
+		<!-- 
+		Behaviors
+		 -->
+		<script src="js/appBehaviors.js"></script>
 
 		<!-- 
 		Models
 		 -->
+		<script src="js/models/background.js"></script>
+		 
 		<script src="js/models/items/movie.js"></script>
 		<script src="js/models/JSONRPC/JSONRPC.js"></script>
 		<script src="js/models/webInterface/webInterface.js"></script>
@@ -50,12 +57,20 @@
 		<!-- 
 		VIEWS
 		 -->
+		<script src="js/views/background.js"></script>
+		
 		<script src="js/views/items/moviePoster.js"></script>
 		<script src="js/views/lists/moviePosterList.js"></script>
 		<script src="js/views/webInterface/webInterface.js"></script>
 		<script src="js/views/widgets/homeMenuBarItem.js"></script>
 		<script src="js/views/widgets/homeMenuBar.js"></script>
+		<script src="js/views/widgets/recentlyAddedMoviesItem.js"></script>
 		<script src="js/views/widgets/recentlyAddedMovies.js"></script>
+
+		<!-- 
+		USER SETTINGS
+		 -->
+		<script src="js/tools/userSettings.js"></script>
 
 		<!-- 
 		CSS
@@ -74,31 +89,36 @@
         TEMPLATES
          -->
         <script id="layout-app" type="text/template">
-<div id="main_wrapper">
-	<div id="background-container"></div>
-	<header id="header" style="display:none">
-	</header>
-	<div id="containerToResize">
-		<div id="nav-content-container">
-			<div id="nav-container">
-				<nav id="nav" style="display: none;">
-				</nav>
-			</div>
-			<div id="content-container">
-				<div id="content">
-				</div>
+<div id="background-container"></div>
+<header id="header" style="display:none">
+</header>
+<div id="containerToResize">
+	<div id="nav-content-container">
+		<div id="nav-container">
+			<nav id="nav" style="display: none;">
+			</nav>
+		</div>
+		<div id="content-container">
+			<div id="content">
 			</div>
 		</div>
 	</div>
-	<footer id="globalFooter">
-		Footer
-	</footer>
 </div>
+<footer id="globalFooter">
+	Footer
+</footer>
+		</script>
+		
+        <script id="layout-home" type="text/template">
+<div id="widget">ici les widgets</div>
+<div id="homeMenu"></div>
+		</script>
+		
+		<script id="background" type="text/template">
+<img src="skins/default/backgrounds/<%- image %>"/>
 		</script>
 
  		<script id="homeMenuBar" type="text/template">
-<div class="items-container">
-</div>
 		</script>
 		
 		<script id="homeMenuBarItem" type="text/template">
@@ -111,11 +131,30 @@
 </a>
 		</script>
 		
+ 		<script id="recentlyAddedMoviesWidget" type="text/template">
+		</script>
+		
+		<script id="recentlyAddedMovieWidget" type="text/template">
+<a href="#movieDetails/<%- movieid %>">
+	<% if(art.poster) {%>
+		<img class="media-object" src="<%- Utils.getImageUrl(art.poster) %>">
+	<% } else { %>
+		<img class="media-object" src="<%- Utils.getImageUrl(undefined, 'movies') %>">
+	<% } %>
+</a>
+		</script>
+		
+		
 
+		<!-- 
+		Layouts
+		 -->
+		<script src="js/appLayout.js"></script>
+        <script src="js/layouts/home.js"></script>
+		 
 		<!-- 
 		APP
 		 -->
-        <script src="js/appLayout.js"></script>
 		<script src="js/appController.js"></script>
         <script src="js/appRouter.js"></script>
 		<script src="js/app.js"></script>
@@ -125,6 +164,8 @@
     </head>
 
     <body>
-    	Loading application...
+    	<div id="main_wrapper">
+    		Loading application...
+    	</div>
     </body>
 </html>

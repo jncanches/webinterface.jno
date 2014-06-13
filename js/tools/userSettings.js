@@ -23,7 +23,9 @@ UserSettings = {
 			id: 4,
 			label : 'Films',
 			link: '#movies',
-			background: "movies.jpg"
+			background: "movies.jpg",
+			widget: RecentlyAddedMoviesView,
+			widgetData: RecentlyAddedMoviesCollection
 		},
 		{
 			id: 5,
