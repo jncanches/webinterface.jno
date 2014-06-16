@@ -7,17 +7,17 @@ var AppLayout = Backbone.Marionette.Layout.extend({
 		this.backgroundView = new BackgroundView({
 			model: this.backgroundModel
 		});
-		this.background.show(this.backgroundView);
+		this.regionBackground.show(this.backgroundView);
 	},
 	
 	regions: {
 		main: "#main_wrapper",
-		background: "#background-container",
-		header: "#header",
-		nav: "#nav",
-		content: "#content",
-		footer: "#globalFooter",
-		resizable: "#containerToResize"
+		regionBackground: "#region-background",
+		regionHeader: "#region-header",
+		regionNav: "#region-nav",
+		regionContent: "#region-content",
+		regionFooter: "#region-footer",
+		resizable: "#region-to-resize"
 	},
 
 	resizeElements: function() {
@@ -27,8 +27,8 @@ var AppLayout = Backbone.Marionette.Layout.extend({
 	
 	resizeContainerEl: function() {
 		var newHeight = $(window).height()+4;
-		if ($(this.header.el).is(':visible')) {
-			newHeight = newHeight - $(this.header.el).height();
+		if ($(this.regionHeader.el).is(':visible')) {
+			newHeight = newHeight - $(this.regionHeader.el).height();
 		}
 		$(this.resizable.el).height(newHeight);
 	},
@@ -39,8 +39,8 @@ var AppLayout = Backbone.Marionette.Layout.extend({
 		if (winw <= 1024 || winh <= 768) {
 			return;
 		} 
-		$(this.background.el).width(winw);
-		$(this.background.el).height(winh);
+		$(this.regionBackground.el).width(winw);
+		$(this.regionBackground.el).height(winh);
 	}
 
 });

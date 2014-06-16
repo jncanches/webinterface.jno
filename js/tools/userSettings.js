@@ -76,9 +76,5 @@ UserSettings = {
 			background: 'settings.jpg'
 		}
 		]
-	},
-	
-	getHomeMenuItems: function() {
-		return WebInterface.UserSettings.defaults.homeMenuItems; 
 	}
 };

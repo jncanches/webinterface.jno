@@ -44,7 +44,6 @@
 		 
 		<script src="js/models/items/movie.js"></script>
 		<script src="js/models/JSONRPC/JSONRPC.js"></script>
-		<script src="js/models/webInterface/webInterface.js"></script>
 		<script src="js/models/widgets/homeMenuBarItem.js"></script>
 		
 		<!-- 
@@ -61,7 +60,6 @@
 		
 		<script src="js/views/items/moviePoster.js"></script>
 		<script src="js/views/lists/moviePosterList.js"></script>
-		<script src="js/views/webInterface/webInterface.js"></script>
 		<script src="js/views/widgets/homeMenuBarItem.js"></script>
 		<script src="js/views/widgets/homeMenuBar.js"></script>
 		<script src="js/views/widgets/recentlyAddedMoviesItem.js"></script>
@@ -89,29 +87,31 @@
         TEMPLATES
          -->
         <script id="layout-app" type="text/template">
-<div id="background-container"></div>
-<header id="header" style="display:none">
+<div id="region-background"></div>
+<header id="region-header" style="display:none">
 </header>
-<div id="containerToResize">
+<div id="region-to-resize">
 	<div id="nav-content-container">
 		<div id="nav-container">
-			<nav id="nav" style="display: none;">
+			<nav id="region-nav" style="display: none;">
 			</nav>
 		</div>
 		<div id="content-container">
-			<div id="content">
+			<div id="region-content">
 			</div>
 		</div>
 	</div>
 </div>
-<footer id="globalFooter">
+<footer id="region-footer">
 	Footer
 </footer>
 		</script>
 		
         <script id="layout-home" type="text/template">
-<div id="widget">ici les widgets</div>
-<div id="homeMenu"></div>
+<div id="region-widget-detail">Details</div>
+<div id="region-widget">widgets</div>
+<div id="region-home-menu"></div>
+<div id="region-home-sub-menu"></div>
 		</script>
 		
 		<script id="background" type="text/template">

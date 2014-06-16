@@ -3,7 +3,7 @@ var HomeLayout = Backbone.Marionette.Layout.extend({
 
 	onShow: function() {
 		var homeMenuBarView = new HomeMenuBarView({collection: new Backbone.Collection(UserSettings.defaults.homeMenuItems)});
-		this.homeMenu.show(homeMenuBarView);
+		this.regionHomeMenu.show(homeMenuBarView);
 		
 		var that = this;
 		homeMenuBarView.on("selectedChanged", function() {
@@ -12,12 +12,14 @@ var HomeLayout = Backbone.Marionette.Layout.extend({
 	},
 
 	regions: {
-		homeMenu: "#homeMenu",
-		widget: "#widget"
+		regionWidgetDetail: "#region-widget-detail",
+		regionWidget: "#region-widget",
+		regionHomeMenu: "#region-home-menu",
+		regionWidgetHomeSubMenu: "#region-home-sub-menu"
 	},
 	
 	updateWidget: function() {
-		var selectedItemView = this.homeMenu.currentView.getSelectedItemView();
+		var selectedItemView = this.regionHomeMenu.currentView.getSelectedItemView();
 		if (selectedItemView) {
 			var widgetView = selectedItemView.widgetView;
 			if (!widgetView) {
@@ -31,9 +33,9 @@ var HomeLayout = Backbone.Marionette.Layout.extend({
 				}
 			}
 			if (selectedItemView.widgetView) {
-				this.widget.show(selectedItemView.widgetView);
+				this.regionWidget.show(selectedItemView.widgetView);
 			} else {
-				this.widget.close();
+				this.regionWidget.close();
 			}
 		}
 	}

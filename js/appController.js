@@ -5,6 +5,6 @@ var AppController = Marionette.Controller.extend({
 
 	displayHome: function() {
 		this.homeLayout = new HomeLayout();
-		this.appLayout.content.show(this.homeLayout);
+		this.appLayout.regionContent.show(this.homeLayout);
 	}
 });

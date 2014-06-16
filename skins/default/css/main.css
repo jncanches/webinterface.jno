@@ -18,7 +18,7 @@ a, a:visited, a:hover, a:active {
 	text-decoration: none;
 }
 
-#background-container {
+#region-background {
 	position: absolute;
 	top:0px;
 	left:0px;
@@ -56,7 +56,7 @@ header {
 	box-shadow: inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
 }
 
-#containerToResize {
+#region-to-resize {
 	position: relative;
 	height: 530px; /*window heigth - header height - footer height*/
 }
@@ -79,7 +79,7 @@ header {
 	-ms-user-select: none;
 }
 
-#nav {
+#region-nav {
 	position: absolute;
 	height: auto;
 	background-color: #fff;
@@ -105,14 +105,14 @@ header {
 	position: relative;
 }
 
-#content {
+#region-content {
 	position: absolute;
 	top: 0px;
 	bottom: 0;
 	width: 100%;
 }
 
-#globalContent
+/*#globalContent
 {
 	overflow: auto;
 	background-color: transparent;
@@ -122,7 +122,7 @@ header {
 	top: 0;
 	right: 0;
 	bottom: 0;
-}
+}*/
 
 section {
 	position: relative;
