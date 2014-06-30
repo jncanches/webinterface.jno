@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="movie-service" attributes="uid fanart">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+	
+    <core-ajax id="ajax"
+		auto
+      url="http://localhost:8081/jsonrpc?request={{ajaxdata}}"
+      on-core-response="{{movieLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+  Polymer('movie-service', {
+	uid: 1,
+	
+	uidChanged: function() {
+		var xbmcparams = {"jsonrpc": "2.0", 
+			"method": "VideoLibrary.GetMovieDetails", 
+			"params": {  
+				"movieid" : this.uid,
+				"properties": ["title", "genre", "year", "rating", "director", "trailer", "tagline", "plot", "plotoutline", "originaltitle", "lastplayed", "playcount", "writer", "studio", "mpaa", "cast", "country", "imdbnumber", "runtime", "set", "showlink", "streamdetails", "top250", "votes", "fanart", "thumbnail", "file", "sorttitle", "resume", "setid", "dateadded", "tag", "art"]
+			},
+			"id": "1"
+		};
+		this.ajaxdata = encodeURIComponent(JSON.stringify(xbmcparams));		
+	},
+	
+    go: function() {
+
+    },
+    movieLoaded: function() {
+      // Make a copy of the loaded data
+	  var result = this.$.ajax.response.result.moviedetails;
+	  
+	  console.log(result);
+    },
+    /** 
+     * Update the service with the current favorite value.
+     * (Two-way data binding updates the favorite value 
+     * stored locally.) If this was a real service, this
+     * method would do something useful.
+     * 
+     * @method setFavorite
+     * @param uid {Number} Unique ID for post.
+     * @param isFavorite {Boolean} True if the user marked this post as a favorite.
+     */
+    setFavorite: function(uid, isFavorite) {
+      // no service backend, just log the change
+      //console.log('Favorite changed: ' + uid + ", now: " + isFavorite);
+    }
+  });
+  </script>
+</polymer-element>
