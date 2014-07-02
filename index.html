@@ -12,8 +12,6 @@
 	<link rel="import" href="components/core-item/core-item.html">
 	<link rel="import" href="components/paper-icon-button/paper-icon-button.html">
 
-    <link rel="import" href="components/core-signals/core-signals.html">
-	
     <link rel="import" href="components/wi-background/wi-background.html">
     <link rel="import" href="components/wi-movie-service/wi-movie-service.html">
 
@@ -43,35 +41,39 @@
 	
   </head>
   <body fullbleed unresolved>
-    <!-- 3. Declare the element. Configure using its attributes. -->
-    <wi-movie-service uid="8"></wi-movie-service>
 	
-<core-drawer-panel id="drawerPanel">
-  <core-header-panel drawer mode="seamed">
-    <core-toolbar id="navheader'">
-      <span>Menu</span>
-    </core-toolbar>
-    <core-menu>
-      <core-item label="One"></core-item>
-      <core-item label="Two"></core-item>
-    </core-menu>
-   </core-header-panel>
+	<core-drawer-panel id="drawerPanel">
+	  <core-header-panel drawer mode="seamed" >
+	    <core-toolbar id="navheader'">
+	      <span>Menu</span>
+	    </core-toolbar>
+	    <core-menu>
+	      <core-item label="One"></core-item>
+	      <core-item label="Two"></core-item>
+	    </core-menu>
+	   </core-header-panel>
+	
+	  <core-header-panel main mode="waterfall-tall">
+	    <core-toolbar id="mainheader">
+	      <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
+	      <span flex>Title</span>
+	      <paper-icon-button id="searchicon" icon="search"></paper-icon-button>
+	    </core-toolbar>
+	    <div class="content" style="background: linear-gradient(rgb(214, 227, 231), lightblue);">
+	    	<wi-background></wi-background>
+	    </div>
+	  </core-header-panel>
+	
+	</core-drawer-panel>
 
-  <core-header-panel main mode="waterfall-tall">
-    <core-toolbar id="mainheader">
-      <paper-icon-button id="navicon" icon="menu"></paper-icon-button>
-      <span flex>Title</span>
-      <paper-icon-button id="searchicon" icon="search"></paper-icon-button>
-    </core-toolbar>
-    <div class="content" style="height: 2000px; background: linear-gradient(rgb(214, 227, 231), lightblue);">
-    	<wi-background></wi-background>
-    </div>
-  </core-header-panel>
-
-</core-drawer-panel>
+<wi-movie-service uid="8"></wi-movie-service>
 	
     <script>
-    document.addEventListener('polymer-ready', function() {
+    	function test() {
+    		console.log("aaaaaaaaaaaa");
+    	}
+    
+    	document.addEventListener('polymer-ready', function() {
     	  var navicon = document.getElementById('navicon');
     	  var drawerPanel = document.getElementById('drawerPanel');
     	  navicon.addEventListener('click', function() {

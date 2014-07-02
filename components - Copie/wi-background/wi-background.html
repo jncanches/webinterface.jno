@@ -1,0 +1,31 @@
+<link rel="import" href="../../components/polymer/polymer.html">
+<link rel="import" href="../../components/core-ajax/core-ajax.html">
+<link rel="import" href="../../components/core-signals/core-signals.html">
+
+<polymer-element name="wi-background" attributes="src">
+  <template>
+    <style>
+    :host {
+    }
+    </style>
+    <div horizontal layout on-core-signal-movieloaded="{{movieLoaded}}">
+    	<img flex id="background" src="{{src}}" alt="">
+    </div>
+  </template>
+  <script>
+  Polymer('wi-background', {
+	src: '',
+	
+	ready: function() {
+		document.querySelector('wi-movie-service').addEventListener('movieloaded', function(e) {
+			document.querySelector('wi-background').$.background.src = '/image/' + encodeURIComponent(e.detail.details.art.fanart);
+		});
+	},
+  
+  	movieLoaded: function(e, detail) {
+  		console.log(e, detail);
+  	}
+  
+  });
+  </script>
+</polymer-element>
