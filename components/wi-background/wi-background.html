@@ -2,28 +2,30 @@
 <link rel="import" href="../../components/core-ajax/core-ajax.html">
 <link rel="import" href="../../components/core-signals/core-signals.html">
 
-<polymer-element name="wi-background" attributes="src">
-  <template>
-    <style>
-    :host {
-    }
-    </style>
-    <core-signals on-core-signal-movieloaded="{{movieloaded}}"></core-signals>
-    <div horizontal layout>
-    	<img flex id="background" src="{{src}}" alt="">
-    </div>
-  </template>
-  <script>
-  Polymer('wi-background', {
-	src: '',
+<polymer-element name="wi-background" attributes="src"> <template>
+<style>
+:host {
 	
-  	movieloaded: function(e, detail) {
-  		if (typeof detail == "undefined") return;
-  		if (typeof detail.art == "undefined") return;
-  		if (typeof detail.art.fanart == "undefined") return;
-  		this.$.background.src = '/image/' + encodeURIComponent(detail.art.fanart);  		
-  	}
-  
-  });
-  </script>
-</polymer-element>
+}
+</style>
+<core-signals on-core-signal-movieloaded="{{movieloaded}}"></core-signals>
+<div horizontal layout>
+	<img flex id="background" src="{{src}}" alt="">
+</div>
+</template> <script>
+	Polymer('wi-background', {
+		src : '',
+
+		movieloaded : function(e, detail) {
+			if (typeof detail == "undefined")
+				return;
+			if (typeof detail.art == "undefined")
+				return;
+			if (typeof detail.art.fanart == "undefined")
+				return;
+			this.$.background.src = '/image/'
+					+ encodeURIComponent(detail.art.fanart);
+		}
+
+	});
+</script> </polymer-element>
